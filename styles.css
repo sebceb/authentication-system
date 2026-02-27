@@ -1,0 +1,58 @@
+:root {
+        /* Subtle Yellow Undertone Palette */
+        --bg-color: #fdfaf0;      /* Warm cream background */
+        --card-bg: #ffffff;      /* Pure white for contrast */
+        --primary: #f2c94c;      /* Golden yellow accent */
+        --text: #4a4538;         /* Soft dark brown (better than harsh black) */
+        --border-radius: 12px;   /* The "Rounded Edges" flair */
+    }
+
+    body {
+        background-color: var(--bg-color);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    form, #user-profile {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        /* Flat look: No heavy shadows, just a soft border */
+        border: 2px solid #f0e6cc; 
+        width: 300px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0 20px 0;
+        border: 1px solid #e0d8c3;
+        border-radius: 8px; /* Slightly less rounded than the card */
+        background-color: #fffef9; /* Slight yellow tint in inputs */
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary);
+        border: none;
+        border-radius: var(--border-radius);
+        color: #5c4b1a; /* Darker yellow-brown for text */
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.1s ease;
+    }
+
+    button:hover {
+        filter: brightness(0.95);
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
