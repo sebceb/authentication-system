@@ -122,9 +122,13 @@ async function enterStore(user) {
 
     // 1. Fetch categories
     const categories = await fetchCategories();
+
+    // DEBUG: Log the fetched categories to see what the API provides.
+    console.log('All available categories from API:', categories);
+    console.log(`Total categories found: ${categories.length}`);
     
     // 2. Fetch the most stable category (usually the first one, e.g., Clothes)
-    const selectedCategory = categories[0];
+    const selectedCategory = categories[4]; // NOTE: You can only use an index from 0 to 4.
     
     // Set the filter in the global state
     state.filters.categoryId = selectedCategory ? selectedCategory.id : null;

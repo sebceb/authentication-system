@@ -10,8 +10,8 @@ export async function fetchCategories() {
         if (!response.ok) throw new Error('Failed to fetch categories');
         const data = await response.json();
         
-        // Return only the first 5 categories to keep the UI manageable
-        return data.slice(0, 5);
+        // Return all categories so higher indices like 37 will work
+        return data;
     } catch (error) {
         console.error('API Error (Categories):', error);
         return [];
