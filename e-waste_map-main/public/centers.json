@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "SM Lanang", 
+    "lat": 7.0992777646302505,
+    "lng": 125.63158707288851,
+    "address": "3/F, J.P. Laurel Ave., Poblacion, Davao City",
+    "types": ["Batteries", "Small Electronics", "Lead-acid"]
+  },
+
+  {
+    "id": 2,
+    "name": "SM City Davao", 
+    "lat": 7.050874485517081,
+    "lng": 125.5882415666896,
+    "address": "Quimpo Blvd, Ecoland, Davao City",
+    "types": ["Mobile Phones", "Gadgets", "Batteries", "Accessories"]
+  },
+  
+  {
+    "id": 3,
+    "name": "Globe E-Waste Zero Bin (Abreeza)", 
+    "lat": 7.090824057079079,
+    "lng": 125.61156278404209,
+    "address": "J.P Laurel Ave., Poblacion, Davao City",
+    "types": ["Mobile Phones", "Gadgets", "Batteries", "Accessories"]
+  }
+]
