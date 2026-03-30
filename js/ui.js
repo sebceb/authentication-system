@@ -6,11 +6,11 @@ export function renderProducts(products, containerId) {
     if (!grid) return;
 
     grid.innerHTML = products.map(product => {
-        // Clean up the image URL (removes brackets, quotes, and backslashes)
         let imageUrl = product.images[0] || 'https://placehold.co/200';
-        if (imageUrl.startsWith('[')) {
-            imageUrl = imageUrl.replace(/[\[\]"\\]/g, '');
-        }
+        
+        // Unconditionally strip out brackets, quotes, and backslashes 
+        // and take the first URL in case there are comma-separated links
+        imageUrl = imageUrl.replace(/[\[\]"\\]/g, '').split(',')[0].trim();
 
         return `
             <div class="product-card">
@@ -35,26 +35,42 @@ export function renderCart(cart, itemsId, totalId) {
 
     let total = 0;
 
-    container.innerHTML = cart.map(item => {
+    if (cart.length === 0) {
+        container.innerHTML = '<p>Your cart is empty.</p>';
+        totalEl.textContent = `Total: $0.00`;
+        return;
+    }
+
+    const headerHtml = `
+        <div class="cart-header">
+            <div>Item</div>
+            <div>Price</div>
+            <div>Quantity</div>
+            <div>Total</div>
+        </div>
+    `;
+
+    const itemsHtml = cart.map(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
 
         return `
             <div class="cart-item">
-                <div class="item-info">
-                    <strong>${item.name}</strong>
-                    <span>$${item.price} each</span>
-                </div>
-                <div class="item-controls">
+                <div class="cart-col"><strong>${item.name}</strong></div>
+                <div class="cart-col">$${item.price}</div>
+                <div class="cart-col item-controls">
                     <button class="qty-btn" data-id="${item.id}" data-action="dec">-</button>
                     <span class="qty-value">${item.quantity}</span>
                     <button class="qty-btn" data-id="${item.id}" data-action="inc">+</button>
-                    <button class="remove-btn" data-id="${item.id}">Remove</button>
                 </div>
-                <div class="item-total">$${itemTotal.toFixed(2)}</div>
+                <div class="cart-col item-total">
+                    $${itemTotal.toFixed(2)}
+                    <button class="remove-btn" data-id="${item.id}" title="Remove">X</button>
+                </div>
             </div>
         `;
     }).join('');
 
+    container.innerHTML = headerHtml + itemsHtml;
     totalEl.textContent = `Total: $${total.toFixed(2)}`;
 }

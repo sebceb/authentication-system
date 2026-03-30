@@ -9,23 +9,34 @@
 <body>
     <div id="auth-view">
         <div class="auth-container">
-            <h1>Welcome to THeSt0re</h1>
-            <div class="auth-box">
-                <h2>Sign In</h2>
-                <input type="text" id="signin-username" placeholder="Username">
-                <input type="password" id="signin-password" placeholder="Password">
-                <button id="signin-btn">Sign In</button>
+            <div class="auth-left">
+                <h1 class="welcome-text">Browse your favorites.</h1>
+                
+                <p class="toggle-text">
+                    <span id="toggle-prefix">New to THeSt0re?</span> 
+                    <span id="toggle-auth-mode" class="clickable-link">Sign up now.</span>
+                </p>
+                
+                <div class="auth-box">
+                    <h2>Guest</h2>
+                    <button id="guest-btn">Join as Guest</button>
+                </div>
             </div>
-            <div class="auth-box">
-                <h2>Sign Up</h2>
-                <input type="email" id="signup-email" placeholder="Email">
-                <input type="text" id="signup-username" placeholder="Username">
-                <input type="password" id="signup-password" placeholder="Password">
-                <button id="signup-btn">Sign Up</button>
-            </div>
-            <div class="auth-box">
-                <h2>Guest</h2>
-                <button id="guest-btn">Join as Guest</button>
+
+            <div class="auth-right">
+                <div id="signin-container" class="auth-box">
+                    <h2>Sign In</h2>
+                    <input type="email" id="signin-username" placeholder="Username">
+                    <input type="password" id="signin-password" placeholder="Password">
+                    <button id="signin-btn">Sign In</button>
+                </div>
+                <div id="signup-container" class="auth-box">
+                    <h2>Sign Up</h2>
+                    <input type="email" id="signup-email" placeholder="Email">
+                    <input type="text" id="signup-username" placeholder="Username">
+                    <input type="password" id="signup-password" placeholder="Password">
+                    <button id="signup-btn">Sign Up</button>
+                </div>
             </div>
         </div>
     </div>

@@ -38,12 +38,39 @@ async function init() {
  * (Sign Up, Sign In, and Join as Guest) and handles their logic.
  */
 function setupAuthListeners() {
+    const toggleAuthMode = document.getElementById('toggle-auth-mode');
+    const togglePrefix = document.getElementById('toggle-prefix');
+    const signupContainer = document.getElementById('signup-container');
+    const signinContainer = document.getElementById('signin-container');
+
+    if (toggleAuthMode && togglePrefix && signupContainer && signinContainer) {
+        // Default to Sign In mode
+        signupContainer.style.display = 'none';
+        signinContainer.style.display = 'block';
+
+        let isSignIn = true; // Track current view state
+
+        toggleAuthMode.addEventListener('click', () => {
+            isSignIn = !isSignIn; // Flip the state
+            
+            signupContainer.style.display = isSignIn ? 'none' : 'block';
+            signinContainer.style.display = isSignIn ? 'block' : 'none';
+            
+            // Update the text dynamically
+            togglePrefix.textContent = isSignIn ? 'New to THeSt0re?' : 'Welcome back to THeSt0re.';
+            toggleAuthMode.textContent = isSignIn ? 'Sign up now.' : 'Sign in now.';
+        });
+    }
+
     document.getElementById('signup-btn')?.addEventListener('click', () => {
         const email = document.getElementById('signup-email').value.trim();
         const username = document.getElementById('signup-username').value.trim();
         const password = document.getElementById('signup-password').value.trim();
         
         if (!email || !username || !password) return alert("Please fill all sign up fields");
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) return alert("Please enter a valid email address.");
 
         const users = Storage.getUsers();
         if (users.find(u => u.username === username)) return alert("Username already exists");
