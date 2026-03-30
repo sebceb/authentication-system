@@ -128,7 +128,7 @@ async function enterStore(user) {
     console.log(`Total categories found: ${categories.length}`);
     
     // 2. Fetch the most stable category (usually the first one, e.g., Clothes)
-    const selectedCategory = categories[4]; // NOTE: You can only use an index from 0 to 4.
+    const selectedCategory = categories[4];
     
     // Set the filter in the global state
     state.filters.categoryId = selectedCategory ? selectedCategory.id : null;
@@ -149,7 +149,7 @@ async function enterStore(user) {
 
 /**
  * Fetches products from the API based on current filters (category, price limits).
- * Filters out items with invalid images and restricts the output to 25 products.
+ * Filters out items with invalid images and restricts the output to 50 products.
  * Triggers the UI to re-render the product grid.
  */
 async function refreshProducts() {
@@ -166,8 +166,8 @@ async function refreshProducts() {
         return hasValidImage;
     });
 
-    // Keep a maximum of 25 products for UI consistency
-    state.products = state.products.slice(0, 25);
+    // Keep a maximum of 50 products for UI consistency
+    state.products = state.products.slice(0, 50);
 
     console.log(`Confirmed: ${state.products.length} products found.`);
     renderProducts(state.products, 'product-grid');
